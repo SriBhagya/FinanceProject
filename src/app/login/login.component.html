@@ -1,0 +1,30 @@
+<div class="container">
+
+    <div class="jumbotron">
+        <h3>Login Here</h3>
+        <form name="form" #loginForm="ngForm" ngSubmit=loginUser(loginForm) novalidate>
+            <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text" class="form-control" [(ngModel)]="username" #uname="ngModel" name="username" required/>
+                <div *ngIf="!uname.valid && (uname.dirty || uname.touched)" class="error">
+                    <div class="text-danger" *ngIf="uname.errors?.required">User Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" [(ngModel)]="password" #pwd="ngModel" name="password" minlength="6" required/>
+                <div *ngIf="!pwd.valid && (pwd.dirty || pwd.touched)" class="error">
+                    <div class="text-danger" *ngIf="pwd.errors?.required">Password is required</div>
+                    <div class="text-danger" *ngIf="pwd.errors?.minlength">Password must be atleast 6 characters</div>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Login</button>&nbsp; &nbsp;
+            <a href="javascript:;" (click)="NewPassord()">Forget Password</a>
+            <br>
+            <br>
+            <div>New User? <a href="#">Register Here</a></div>
+        </form>
+    </div>
+
+
+</div>

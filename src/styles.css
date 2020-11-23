@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+.jumbotron {
+    width: 40%;
+    margin-top: 5%;
+    justify-content: center;
+    margin: auto;
+    margin-top: 5%;
+}

@@ -1,0 +1,26 @@
+<div class="container">
+
+    <div class="jumbotron">
+        <h3>Change Password</h3>
+        <form name="form" #loginForm="ngForm" ngSubmit=loginUser(loginForm) novalidate>
+            <div class="form-group" [class.has.error]="password.touched && password.invalid">
+                <label for="password" class="control-label">New Password</label>
+                <input name="password" required type="text" class="form-control" [(ngModel)]="user.password" #password="ngModel">
+                <span class="help-block text-danger" *ngIf="(password.dirty || password.touched) && password.errors?.required">
+                         Password is required</span>
+            </div>
+            <div class="form-group" [class.has.error]="confirmPassword.touched && confirmPassword.invalid">
+                <label for="confirmPassword" class="control-label">Confirm Password</label>
+                <input name="confirmPassword" appConfirmEqualValidator="password" required type="text" class="form-control" [(ngModel)]="user.confirmPassword" #confirmPassword="ngModel">
+                <span class="help-block text-danger" *ngIf="confirmPassword.touched && confirmPassword.errors?.required">Confirm Password is required</span>
+                <span class="help-block text-danger" *ngIf="confirmPassword.touched && confirmPassword.errors?.notEqual && !confirmPassword.errors?.required">Password and Confirm Password does not match</span>
+            </div>
+            <button class="btn btn-primary mr-3" type="submit" [disabled]="!loginForm.valid">Save</button>
+
+            <button class="btn btn-secondary" type="button" (click)=goBack()>Go Back</button>
+
+        </form>
+
+
+    </div>
+</div>
